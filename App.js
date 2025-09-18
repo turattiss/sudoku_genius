@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import "./global.css";
+import { Text, View } from "react-native";
+import useFontsLoader from './src/FontsLoader';
+import StartButton from "./src/components/StartButton";
 
 export default function App() {
+  const fontsLoaded = useFontsLoader(); 
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View className="flex-1 items-center justify-center bg-salmon gap-20">
+      <View>
+        <Text className="text-7xl font-bold text-darkblue font-pixel">
+        Sudoku Genius
+      </Text>
+      </View>
+      <View>
+        <StartButton />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
