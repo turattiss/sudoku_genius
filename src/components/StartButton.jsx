@@ -1,23 +1,40 @@
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function StartButton() {
-
-    const router = useRouter();
+  const router = useRouter();
 
   return (
-    <View className="flex-2 items-center justify-center">
+    <View style={styles.container}>
       <TouchableOpacity
-        style={{ width: 150, height: 150 }}
-        className="mt-10 items-center justify-center"
+        style={styles.button}
         onPress={() => router.push('/game')}
       >
         <Image
           source={require("../../assets/images/StartButton.png")}
-          style={{ width: "100%", height: "100%" }}
+          style={styles.image}
           resizeMode="contain"
         />
       </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    width: 150,
+    height: 150,
+    marginTop: 40, // substitui mt-10
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+});
