@@ -8,7 +8,7 @@ export default function ExitButton() {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/')}
+        onPress={() => router.replace("/")}
       >
         <Image
           source={require("../../assets/images/ExitButton.png")}
@@ -22,14 +22,12 @@ export default function ExitButton() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
     alignItems: "center",
     justifyContent: "center",
   },
   button: {
     width: 150,
     height: 150,
-    marginTop: 40, // substitui mt-10
     alignItems: "center",
     justifyContent: "center",
   },

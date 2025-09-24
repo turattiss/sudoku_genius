@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import Cell from "./Cell";
 
-export default function ({ rowIndex, rowValue, selectedCell, setSelectedCell }) {
+export default function ({ rowIndex, rowValue, selectedCell, setSelectedCell, celulasEditaveis }) {
   return (
     <View style={styles.row}>
       {Array.from({ length: 9 }).map((_, cellIndex) => (
@@ -12,6 +12,7 @@ export default function ({ rowIndex, rowValue, selectedCell, setSelectedCell }) 
           value={rowValue[cellIndex]}
           selectedCell={selectedCell}
           setSelectedCell={setSelectedCell}
+          celulasEditaveis={celulasEditaveis}
         />
       ))}
     </View>

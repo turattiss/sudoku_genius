@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function Cell({ colIndex, rowIndex, value, selectedCell, setSelectedCell }) {
+export default function Cell({
+  colIndex,
+  rowIndex,
+  value,
+  selectedCell,
+  setSelectedCell,
+  celulasEditaveis,
+}) {
+
+  const isEditable =
+    celulasEditaveis.some((c) => c.row === rowIndex && c.col === colIndex);
 
   const isSelected =
     selectedCell.row === rowIndex && selectedCell.col === colIndex;
@@ -34,7 +44,13 @@ export default function Cell({ colIndex, rowIndex, value, selectedCell, setSelec
           borderBottomWidth: isBottomBorder(rowIndex) ? 2 : 1,
         },
       ]}
-      onPress={() => setSelectedCell({ row: rowIndex, col: colIndex })}
+      onPress={() => {
+        if (isSelected) {
+          setSelectedCell({row: null, col: null});
+        } else {
+          setSelectedCell({ row: rowIndex, col: colIndex }); 
+        }
+      }}
     >
       <Text
         style={[
@@ -42,7 +58,7 @@ export default function Cell({ colIndex, rowIndex, value, selectedCell, setSelec
           isSelected ? styles.textoSelecionado : styles.textoNormal,
         ]}
       >
-        {value}
+         {isEditable ? value : null}
       </Text>
     </TouchableOpacity>
   );

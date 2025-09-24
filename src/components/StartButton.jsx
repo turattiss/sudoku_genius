@@ -8,7 +8,7 @@ export default function StartButton() {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/game')}
+        onPress={() => router.replace("/game")}
       >
         <Image
           source={require("../../assets/images/StartButton.png")}
@@ -22,14 +22,12 @@ export default function StartButton() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
     alignItems: "center",
     justifyContent: "center",
   },
   button: {
     width: 150,
     height: 150,
-    marginTop: 40, // substitui mt-10
     alignItems: "center",
     justifyContent: "center",
   },

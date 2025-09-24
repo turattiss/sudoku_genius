@@ -1,14 +1,14 @@
-import { Text, View, ScrollView, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import useFontsLoader from "./src/FontsLoader";
 import ExitButton from "./src/components/ExitButton";
 import Table from "./src/components/Table";
+import Keyboard from "./src/components/Keyboard";
 
 export default function App() {
   const fontsLoaded = useFontsLoader();
   if (!fontsLoaded) return null;
 
   return (
-    <ScrollView>
       <View style={styles.container}>
         <View>
           <Text style={styles.title}>Sudoku Genius</Text>
@@ -17,26 +17,29 @@ export default function App() {
           <Table />
         </View>
         <View>
+          <Keyboard />
+        </View>
+        <View>
           <ExitButton />
         </View>
       </View>
-    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "column",
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#e29578", // salmon
+    justifyContent: "space-evenly",
+    backgroundColor: "#e29578",
     paddingVertical: 40,
   },
   title: {
-    fontSize: 48, // text-7xl
+    fontSize: 48, 
     fontWeight: "bold",
-    color: "#006d77", // darkblue
-    fontFamily: "pixel", // corresponde ao font-pixel do hook
+    color: "#006d77", 
+    fontFamily: "pixel", 
     textAlign: "center",
   },
 });
