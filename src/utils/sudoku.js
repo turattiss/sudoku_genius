@@ -55,7 +55,7 @@ export function preencher(board) {
 export function celulasEditaveis() {
   const celulas = [];
 
-  while(celulas.length != 35){
+  while(celulas.length != 37){
     const row = Math.floor(Math.random() * 9);
     const col = Math.floor(Math.random() * 9);
 
@@ -67,3 +67,18 @@ export function celulasEditaveis() {
   }
   return celulas;
 }
+
+export function preencherCelulaNoBoard(board, row, col, valor) {
+  const newBoard = board.map(r => [...r]);
+  newBoard[row][col] = valor;
+  return newBoard;
+}
+
+export function verificarValor(valorInput, valorCorreto){
+  if(valorInput === valorCorreto){
+    return true;
+  }else{
+    return false;
+  }
+}
+

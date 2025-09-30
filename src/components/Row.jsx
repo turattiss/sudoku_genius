@@ -1,20 +1,32 @@
 import { View, StyleSheet } from "react-native";
 import Cell from "./Cell";
 
-export default function ({ rowIndex, rowValue, selectedCell, setSelectedCell, celulasEditaveis }) {
+export default function Row({
+  rowIndex,
+  rowValue,
+  selectedCell,
+  setSelectedCell,
+  celulasEditaveis,
+  solution,
+}) {
   return (
     <View style={styles.row}>
-      {Array.from({ length: 9 }).map((_, cellIndex) => (
-        <Cell
-          key={cellIndex}
-          colIndex={cellIndex}
-          rowIndex={rowIndex}
-          value={rowValue[cellIndex]}
-          selectedCell={selectedCell}
-          setSelectedCell={setSelectedCell}
-          celulasEditaveis={celulasEditaveis}
-        />
-      ))}
+      {rowValue.map((cellValue, colIndex) => {
+        const estaErrada = cellValue !== 0 && cellValue !== solution[colIndex];
+
+        return (
+          <Cell
+            key={colIndex}
+            colIndex={colIndex}
+            rowIndex={rowIndex}
+            value={cellValue}
+            selectedCell={selectedCell}
+            setSelectedCell={setSelectedCell}
+            celulasEditaveis={celulasEditaveis}
+            erro={estaErrada} 
+          />
+        );
+      })}
     </View>
   );
 }

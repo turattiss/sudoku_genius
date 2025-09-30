@@ -1,8 +1,8 @@
 import { Text, View, StyleSheet } from "react-native";
 import useFontsLoader from "./src/FontsLoader";
 import ExitButton from "./src/components/ExitButton";
-import Table from "./src/components/Table";
-import Keyboard from "./src/components/Keyboard";
+import TableKeyboard from "./src/components/TableKeyboard";
+import Lifes from "./src/components/Lifes";
 
 export default function App() {
   const fontsLoaded = useFontsLoader();
@@ -14,13 +14,7 @@ export default function App() {
           <Text style={styles.title}>Sudoku Genius</Text>
         </View>
         <View>
-          <Table />
-        </View>
-        <View>
-          <Keyboard />
-        </View>
-        <View>
-          <ExitButton />
+          <TableKeyboard />
         </View>
       </View>
   );
@@ -41,5 +35,6 @@ const styles = StyleSheet.create({
     color: "#006d77", 
     fontFamily: "pixel", 
     textAlign: "center",
+    marginTop: 30,
   },
 });

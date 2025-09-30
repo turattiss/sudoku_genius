@@ -8,10 +8,11 @@ export default function Cell({
   selectedCell,
   setSelectedCell,
   celulasEditaveis,
+  erro,
 }) {
-
-  const isEditable =
-    celulasEditaveis.some((c) => c.row === rowIndex && c.col === colIndex);
+  const isEditable = celulasEditaveis.some(
+    (c) => c.row === rowIndex && c.col === colIndex
+  );
 
   const isSelected =
     selectedCell.row === rowIndex && selectedCell.col === colIndex;
@@ -46,19 +47,20 @@ export default function Cell({
       ]}
       onPress={() => {
         if (isSelected) {
-          setSelectedCell({row: null, col: null});
+          setSelectedCell({ row: null, col: null });
         } else {
-          setSelectedCell({ row: rowIndex, col: colIndex }); 
+          setSelectedCell({ row: rowIndex, col: colIndex });
         }
       }}
     >
       <Text
         style={[
           styles.texto,
-          isSelected ? styles.textoSelecionado : styles.textoNormal,
+          isEditable ? styles.textoEditavel : styles.textoNormal,
+          erro && styles.textoErrado,
         ]}
       >
-         {isEditable ? value : null}
+        {value !== 0 ? value : ""}
       </Text>
     </TouchableOpacity>
   );
@@ -88,7 +90,10 @@ const styles = StyleSheet.create({
   textoNormal: {
     color: "#006D77",
   },
-  textoSelecionado: {
-    color: "#83C5BE",
+  textoEditavel: {
+    color: "#edf6f9",
+  },
+  textoErrado: {
+    color: "#8b3414ff",
   },
 });
